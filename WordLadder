@@ -1,0 +1,59 @@
+Given a function that accepts a word and returns a collection of new words with one letter changed, write a method that prints a sequence of words from HEAD->TAIL.
+
+#def returnCollection(word)
+# returns collection
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.visited = 0
+        self.prev = None
+    def __equals__(self, node):
+        return self.data == node.data
+        
+class Graph:
+    def __init__(self,node):
+        self.root = node
+        
+    def addEdge(Node node1, Node node2):
+        node2.prev = node1
+                                
+    def printPath(word):
+        while(word.prev !=None):
+            print word.data
+            word = word.prev
+            
+def convert(source, dest):
+    if(source ==None or dest ==None):
+        print 'Invalid Entries!'
+    if(source == dest):
+        print dest
+    queue = []    
+    queue.append(source)
+    source.visited = 1
+    g = Graph(source)
+    while (len(queue)!=0):
+        currentWord = queue.pop()
+        collection = returnCollection(currentWord)
+        for word in collection: 
+            nWord = Node(word)           
+            if(nWord == dest):
+                g.printPath(nWord)
+                return
+            if(word.visited == 0):
+                g.addEdge(word, nWord)
+                word.visited = 1
+                queue.append(word)
+    return 'Unreachable path!'
+    
+    
+ Test
+ Empty = Source | Dest
+ Single Character
+ Long Sequence
+ Same, Diff length seq
+ special characters
+ unicode
+ Browser
+ Memory
+ 
+
